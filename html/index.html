@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Gran Pozo Azufrado | Ecoturismo, Aguas Termales y Bienestar en Tocaima</title>
+    <meta name="description" content="Descubre El Gran Pozo Azufrado en Tocaima, Cundinamarca. Aguas termales azufradas terapéuticas, lodoterapia ancestral, gastronomía típica al horno de leña y descanso ecoturístico.">
+    <meta name="keywords" content="Los Pozos Azufrados, El Gran Pozo Azufrado, Tocaima, turismo Tocaima, aguas termales, lodoterapia, lodo medicinal, ecoturismo Cundinamarca, gallina de leña, hospedaje Tocaima">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="El Gran Pozo Azufrado | Ecoturismo & Bienestar en Tocaima">
+    <meta property="og:description" content="Sumérgete en albercas medicinales azufradas, lodoterapia y la más deliciosa gastronomía tradicional en Tocaima.">
+    <meta property="og:image" content="../FOTOS/EWR.jpeg">
+    <meta property="og:type" content="website">
+
+    <link rel="icon" type="image/jpeg" href="../LOGO/LOGO AKUATTA.jpeg">
+
+    <!-- FUENTES PREMIUM GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- BARRA DE PROGRESO DE LECTURA DINÁMICA -->
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="logo">
+            <a href="#inicio" class="logo-link" style="display: flex; align-items: center; gap: 12px;">
+                <img src="../LOGO/LOGO AKUATTA.jpeg" alt="Logo El Gran Pozo Azufrado" class="logo-img">
+                <div class="logo-text-group">
+                    <span class="logo-title">El Gran Pozo</span>
+                    <span class="logo-accent">Azufrado • Tocaima</span>
+                </div>
+            </a>
+        </div>
+
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú de navegación">
+            <span class="hamburger"></span>
+        </button>
+
+        <ul class="nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#historia">Historia</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#estancia">Estancia</a></li>
+            <li><a href="#gastronomia">Gastronomía</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#comollegar">Cómo Llegar</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#comentarios">Opiniones</a></li>
+        </ul>
+
+        <div class="nav-cta-group">
+            <a href="https://wa.me/573142856899?text=Hola%2C%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20la%20visita%20a%20El%20Gran%20Pozo%20Azufrado" target="_blank" rel="noopener noreferrer" class="btn-nav">
+                WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO / PORTADA -->
+    <section class="hero" id="inicio">
+        <!-- Slideshow con fotos turísticas reales de máximo impacto -->
+        <div class="hero-slider">
+            <div class="hero-slide active" style="background-image: url('../assets/images/imagen principal/WhatsApp Image 2026-05-28 at 3.01.24 AM.jpeg');"></div>
+            <div class="hero-slide" style="background-image: url('../FOTOS/EWR.jpeg');"></div>
+            <div class="hero-slide" style="background-image: url('../FOTOS/DWD.jpeg');"></div>
+            <div class="hero-slide" style="background-image: url('../FOTO DE FONDO/INICIO.jpeg');"></div>
+            <div class="hero-slide" style="background-image: url('../FOTOS/FT.jpeg');"></div>
+        </div>
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                🌿 Santuario Ecoterapéutico • Tocaima, Cundinamarca
+            </div>
+
+            <h1 class="hero-title">
+                Los Pozos Azufrados
+            </h1>
+
+            <p class="hero-subtitle">
+                Aguas termales curativas, lodoterapia mineral ancestral y descanso campestre rodeado de naturaleza viva.
+            </p>
+
+            <div class="hero-buttons">
+                <a href="#servicios" class="btn-hero-primary">
+                    Explorar Atractivos
+                </a>
+                <a href="#estancia" class="btn-hero-secondary">
+                    Tarifas & Estadía (<span id="hero-estancia-price">$35.000</span>)
+                </a>
+                <a href="#ubicacion" class="btn-hero-outline">
+                    📍 Cómo Llegar
+                </a>
+            </div>
+
+            <!-- Atributos destacados rápidos en el hero -->
+            <div class="hero-highlights">
+                <div class="highlight-item">
+                    <span class="highlight-icon">💧</span>
+                    <div class="highlight-text">
+                        <strong>Aguas Minerales</strong>
+                        <span>18°C a 27°C Terapéuticas</span>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">🌋</span>
+                    <div class="highlight-text">
+                        <strong>Lodo Ancestral</strong>
+                        <span>Renovación & Dermo-cuidado</span>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">🍗</span>
+                    <div class="highlight-text">
+                        <strong>Cocina Tradicional</strong>
+                        <span>Gallina campesina de leña</span>
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">🚗</span>
+                    <div class="highlight-text">
+                        <strong>Parqueadero</strong>
+                        <span>Privado y Gratuito</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a href="#historia" class="hero-scroll-btn" aria-label="Desplazar hacia abajo">
+            <span class="scroll-mouse"></span>
+            <span class="scroll-caption">Descubre nuestra historia</span>
+        </a>
+    </section>
+
+    <!-- HISTORIA & PATRIMONIO -->
+    <section class="history section" id="historia">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">TRADICIÓN & PATRIMONIO NATURAL</span>
+                <h2 class="section-title">Nuestra Historia Desde 1942</h2>
+                <p class="section-desc">Un legado de sanación y ecoturismo que ha perdurado por generaciones en el corazón de Cundinamarca.</p>
+            </div>
+
+            <div class="history-intro-card reveal">
+                <div class="intro-badge">📜 Fuente Natural Acuatá Pulido</div>
+                <h3>El Origen de El Gran Pozo Azufrado</h3>
+                <p>
+                    El Gran Pozo Azufrado se explota turísticamente desde <strong>1942</strong> gracias a la visión de <strong>Don Lázaro María Pulido</strong>, quien comprobó personalmente los extraordinarios beneficios medicinales de estas aguas minerales azufradas.
+                </p>
+                <div class="history-cert-badges">
+                    <span class="cert-pill">🏛️ Registro Oficial Ingeominas</span>
+                    <span class="cert-pill">⛏️ Ministerio de Minas</span>
+                    <span class="cert-pill">⚕️ Ministerio de Salud</span>
+                </div>
+            </div>
+
+            <div class="history-grid reveal">
+                <div class="history-card">
+                    <div class="card-icon-box">📜</div>
+                    <h3>Descubrimiento y Fundación</h3>
+                    <div class="history-text-block">
+                        <h4>El Testimonio de Lázaro María Pulido</h4>
+                        <p>Al experimentar una sanación notable en su salud física, Don Lázaro decidió homologar el manantial y crear un espacio para que miles de familias colombianas pudieran acceder a sus virtudes curativas.</p>
+                    </div>
+                    <div class="history-text-block">
+                        <h4>La Primera Piscina: “La Azufrada”</h4>
+                        <p>Construyó la primera alberca de almacenamiento de aguas azufradas en Tocaima, la cual dio inicio al actual complejo turístico y de salud.</p>
+                    </div>
+                </div>
+
+                <div class="history-card">
+                    <div class="card-icon-box">🌿</div>
+                    <h3>Composición & Mística Guacaná</h3>
+                    <div class="history-text-block">
+                        <h4>Aguas Protermales Únicas</h4>
+                        <p>Con temperaturas naturales entre 18°C y 27°C, sus aguas son ricas en azufre bioasimilable, bicarbonatos, sulfatos y yodo de origen profundo.</p>
+                    </div>
+                    <div class="history-text-block">
+                        <h4>Lodoterapia Milenaria</h4>
+                        <p>Los sedimentos finos extraídos del lecho son utilizados como mascarillas para revitalizar la dermis, aliviar dolores articulares y activar la microcirculación.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Línea de tiempo estilizada -->
+            <div class="history-timeline-wrapper reveal">
+                <h3 class="timeline-heading">Hitos Históricos Destacados</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">1942</div>
+                        <div class="timeline-content">
+                            <h4>Descubrimiento Curativo</h4>
+                            <p>Don Lázaro María Pulido experimenta las propiedades medicinales del agua y decide acondicionar el sitio.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Reconocimiento Oficial</div>
+                        <div class="timeline-content">
+                            <h4>Homologación Nacional</h4>
+                            <p>Ingeominas y los Ministerios de Minas y Salud reconocen oficialmente la Fuente Natural Acuatá Pulido.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Actualidad</div>
+                        <div class="timeline-content">
+                            <h4>Complejo Ecoterapéutico y Cultural</h4>
+                            <p>Integración de gastronomía tradicional al horno de leña, piscinas, jacuzzi campestre y senderos ecológicos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE NOSOTROS -->
+    <section class="about section" id="nosotros">
+        <div class="container">
+            <div class="about-wrapper reveal">
+                <div class="about-images-col">
+                    <div class="about-img-main">
+                        <img src="../FOTOS/EWR.jpeg" alt="Paisaje El Gran Pozo Azufrado" class="about-photo-large">
+                    </div>
+                    <div class="about-img-secondary">
+                        <img src="../FOTOS/FT.jpeg" alt="Fauna e iguanas en los pozos" class="about-photo-small">
+                    </div>
+                    <div class="about-badge-floating">
+                        <span class="badge-accent">100%</span>
+                        <span>Natural & Terapéutico</span>
+                    </div>
+                </div>
+
+                <div class="about-content-col">
+                    <div class="section-header align-left">
+                        <span class="section-subtitle">NUESTRA ESENCIA</span>
+                        <h2 class="section-title">Naturaleza, Salud y Tranquilidad en un Solo Lugar</h2>
+                    </div>
+                    <p class="about-lead">
+                        Situados en un microclima privilegiado en Tocaima, ofrecemos un refugio de descanso genuino para desconectar del estrés urbano y renovar la vitalidad.
+                    </p>
+
+                    <div class="about-pillars">
+                        <div class="pillar-card">
+                            <div class="pillar-icon">🌿</div>
+                            <div class="pillar-info">
+                                <h4>Misión</h4>
+                                <p>Fomentar el turismo de bienestar y salud en Tocaima con una atención cálida, permitiendo una experiencia inigualable de relajación en contacto directo con la naturaleza.</p>
+                            </div>
+                        </div>
+
+                        <div class="pillar-card">
+                            <div class="pillar-icon">✨</div>
+                            <div class="pillar-info">
+                                <h4>Visión</h4>
+                                <p>Consolidarnos como el destino ecoterapéutico y cultural más querido y representativo de Cundinamarca, reconocido por la pureza de sus aguas y su hospitalidad.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICIOS DESTACADOS -->
+    <section class="services section" id="servicios">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">EXPERIENCIAS DE BIENESTAR</span>
+                <h2 class="section-title">Nuestros Atractivos y Servicios</h2>
+                <p class="section-desc">Diseñados para brindar descanso profundo, regeneración de la piel y bienestar integral.</p>
+            </div>
+
+            <div class="services-grid reveal">
+                <!-- SERVICIO 1 -->
+                <div class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="../FOTOS/DWD.jpeg" alt="Aguas Azufradas Terapéuticas" class="service-img">
+                        <span class="service-tag">Hidroterapia</span>
+                    </div>
+                    <div class="service-body">
+                        <h3>Albercas de Aguas Azufradas</h3>
+                        <p>Albercas ricas en minerales volcánicos y azufre disuelto natural. Ideales para relajar articulaciones, aliviar fatiga muscular y armonizar el organismo.</p>
+                        <ul class="service-perks">
+                            <li>✓ Aguas a temperatura ambiente protermal (18°C - 27°C)</li>
+                            <li>✓ Estimula la oxigenación y circulación</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SERVICIO 2 -->
+                <div class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="../FOTOS/DVD.jpeg" alt="Lodo Medicinal Ancestral" class="service-img">
+                        <span class="service-tag gold-tag">Dermo-regeneración</span>
+                    </div>
+                    <div class="service-body">
+                        <h3>Lodo Medicinal Ancestral</h3>
+                        <p>Aplicación de barros cargados de oligoelementos extraídos de la fuente natural. Exfolia profundamente, elimina impurezas y deja la piel suave y nutrida.</p>
+                        <ul class="service-perks">
+                            <li>✓ Propiedades antisépticas y tonificantes</li>
+                            <li>✓ Experiencia interactiva para disfrutar en grupo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SERVICIO 3 -->
+                <div class="service-card">
+                    <div class="service-img-wrap">
+                        <img src="../FOTOS/FEF.jpeg" alt="Jacuzzi al aire libre" class="service-img">
+                        <span class="service-tag">Relajación</span>
+                    </div>
+                    <div class="service-body">
+                        <h3>Jacuzzi Campestre & Desintoxicación</h3>
+                        <p>Hidromasaje con burbujas y áreas sombreadas bajo quioscos de palma. Un oasis donde disfrutar de la frescura del agua en un entorno de paz absoluta.</p>
+                        <ul class="service-perks">
+                            <li>✓ Área de quioscos tradicionales y hamacas</li>
+                            <li>✓ Zona rodeada de vegetación nativa</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN ESTANCIA Y HOSPEDAJE (NUEVA & TOTALMENTE ADMINISTRABLE) -->
+    <section class="estancia section" id="estancia">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">DESCANSO & TARIFAS</span>
+                <h2 class="section-title">Estadía en Los Pozos Azufrados</h2>
+                <p class="section-desc">Pasa un día inolvidable o una jornada de tranquilidad en nuestras instalaciones campestres.</p>
+            </div>
+
+            <!-- Contenedor dinámico de planes de estancia alimentado por db.js -->
+            <div id="estancia-public-container" class="estancia-grid">
+                <!-- Se cargará dinámicamente, con fallback estático garantizado -->
+                <div class="estancia-card featured">
+                    <div class="estancia-img-box">
+                        <img src="../FOTOS/EWR.jpeg" alt="Estancia Los Pozos Azufrado">
+                        <span class="estancia-badge">Plan Todo Incluido de Día</span>
+                    </div>
+                    <div class="estancia-details">
+                        <div class="estancia-header-price">
+                            <div>
+                                <h3>Estadía Campestre de Bienestar</h3>
+                                <p class="estancia-location">Km 3,5 vía Tocaima - Jerusalén</p>
+                            </div>
+                            <div class="price-box">
+                                <span class="price-val" id="estancia-display-price">$35.000</span>
+                                <span class="price-unit">por persona</span>
+                            </div>
+                        </div>
+
+                        <p class="estancia-desc-text">
+                            Disfruta de una jornada completa de descanso, salud y relajación en un entorno 100% natural, con acceso ilimitado a todas nuestras amenidades medicinales.
+                        </p>
+
+                        <div class="estancia-features">
+                            <h4>Tu estadía incluye:</h4>
+                            <ul class="features-list" id="estancia-features-list">
+                                <li>✨ Acceso completo a las albercas de aguas azufradas terapéuticas</li>
+                                <li>✨ Aplicación ilimitada de lodo medicinal ancestral</li>
+                                <li>✨ Uso de quioscos, zonas verdes y áreas de descanso</li>
+                                <li>✨ Parqueadero privado vigilado totalmente gratis</li>
+                                <li>✨ Espacios al aire libre y senderos de naturaleza</li>
+                                <li>✨ Instalaciones 100% pet-friendly (bienvenidas las mascotas)</li>
+                            </ul>
+                        </div>
+
+                        <div class="estancia-actions">
+                            <a href="https://wa.me/573142856899?text=Hola%2C%20quisiera%20reservar%20mi%20estad%C3%ADa%20en%20El%20Gran%20Pozo%20Azufrado%20por%20%2435.000" target="_blank" rel="noopener noreferrer" class="btn-estancia-book">
+                                <span>📲 Reservar Estadía por WhatsApp</span>
+                            </a>
+                            <a href="#gastronomia" class="btn-estancia-secondary">
+                                Ver Menú de Comidas y Bebidas
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PREGUNTAS FRECUENTES INTERACTIVAS SOBRE LA ESTADÍA -->
+            <div class="faq-container reveal">
+                <div class="faq-title-bar">
+                    <span class="faq-icon">💡</span>
+                    <div>
+                        <h3>Preguntas Frecuentes sobre la Estadía</h3>
+                        <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">Todo lo que necesitas saber antes y durante tu día de descanso.</p>
+                    </div>
+                </div>
+                <div class="faq-accordion" id="faq-accordion">
+                    <div class="faq-item active">
+                        <button class="faq-question" type="button" aria-expanded="true">
+                            <span>¿Qué incluye la tarifa de $35.000 por persona?</span>
+                            <span class="faq-arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>La tarifa incluye acceso ilimitado durante todo el día a las albercas de aguas azufradas terapéuticas, aplicación de lodo mineral ancestral, uso de quioscos tradicionales con hamacas, zonas verdes de descanso, parqueadero vigilado gratuito e instalaciones 100% pet-friendly.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Cuál es el horario de atención al público?</span>
+                            <span class="faq-arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Atendemos todos los días (lunes a domingo, incluidos días festivos) de 8:30 a.m. a 5:00 p.m. Recomendamos llegar en horas de la mañana para aprovechar al máximo las albercas y encargar tu almuerzo típico al horno de leña.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Es necesario reservar con anticipación?</span>
+                            <span class="faq-arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>No es obligatorio para personas individuales o parejas, pero sí es altamente aconsejable en fines de semana y puentes festivos vía WhatsApp, para asegurar ubicación preferencial en quioscos y garantizar platos especiales como la gallina campesina al horno de leña.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Se permite el ingreso de mascotas?</span>
+                            <span class="faq-arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>¡Totalmente! Somos un destino 100% Pet-Friendly. Tus mascotas pueden acompañarte en todas las zonas campestres y senderos naturales, siempre bajo la supervisión y cuidado de su dueño.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" type="button" aria-expanded="false">
+                            <span>¿Qué indumentaria o elementos debo llevar?</span>
+                            <span class="faq-arrow">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Trae vestido de baño cómodo (preferiblemente que no sea de tonos muy claros debido a la concentración mineral natural), toalla, sandalias o calzado antideslizante, protector solar y ropa fresca de cambio.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GASTRONOMÍA Y BEBIDAS (100% REALES CON FOTOS INTEGRADAS Y PERSISTENCIA) -->
+    <section class="menu section" id="gastronomia">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">SABORES DE ORIGEN & FOGÓN DE LEÑA</span>
+                <h2 class="section-title">Comida Típica y Bebidas</h2>
+                <p class="section-desc">Preparaciones auténticas de la gastronomía de Cundinamarca cocinadas al horno de leña artesanal.</p>
+            </div>
+
+            <!-- Filtros de categoría -->
+            <div class="menu-tabs">
+                <button class="menu-tab-btn active" data-tab="all">
+                    🍽️ Ver Todo
+                </button>
+                <button class="menu-tab-btn" data-tab="comidas">
+                    🍗 Platos de Comida
+                </button>
+                <button class="menu-tab-btn" data-tab="bebidas">
+                    🥤 Bebidas & Cervezas
+                </button>
+            </div>
+
+            <!-- Subfiltro de Bebidas (visible al seleccionar bebidas o todo) -->
+            <div class="drinks-subfilters" id="drinks-subfilters">
+                <span class="subfilter-label">Filtrar bebidas:</span>
+                <button class="subfilter-pill active" data-cat="all">Todas las Bebidas</button>
+                <button class="subfilter-pill" data-cat="gaseosas">🥤 Gaseosas</button>
+                <button class="subfilter-pill" data-cat="aguas">💧 Aguas & Té</button>
+                <button class="subfilter-pill" data-cat="jugos">🥭 Jugos Naturales</button>
+                <button class="subfilter-pill" data-cat="cervezas">🍺 Cervezas Heladas</button>
+            </div>
+
+            <!-- CONTENEDOR DINÁMICO DE COMIDAS -->
+            <div id="comidas-section-wrap" class="food-category-block reveal">
+                <div class="category-title-bar">
+                    <span class="cat-bar-icon">🔥</span>
+                    <h3>Platos Típicos al Horno de Leña</h3>
+                </div>
+                <div class="food-grid" id="comidas-grid">
+                    <!-- Se inyecta dinámicamente desde db.js con las 8 fotos reales -->
+                </div>
+            </div>
+
+            <!-- CONTENEDOR DINÁMICO DE BEBIDAS -->
+            <div id="bebidas-section-wrap" class="food-category-block reveal" style="margin-top: 50px;">
+                <div class="category-title-bar">
+                    <span class="cat-bar-icon">❄️</span>
+                    <h3>Bebidas Refrescantes, Jugos & Licores</h3>
+                </div>
+                <div class="drinks-grid" id="bebidas-grid">
+                    <!-- Se inyecta dinámicamente desde db.js con las 16 fotos reales -->
+                </div>
+            </div>
+
+            <!-- Nota de atención -->
+            <div class="menu-order-note reveal">
+                <div class="note-icon">💬</div>
+                <div class="note-text">
+                    <strong>¿Deseas encargar tu almuerzo con anticipación para tu llegada?</strong>
+                    <p>Escríbenos por WhatsApp con tu pedido y la hora estimada de visita para tener tu mesa y comida listas.</p>
+                </div>
+                <a href="https://wa.me/573142856899?text=Hola%2C%20quisiera%20encargar%20un%20plato%20del%20men%C3%BA" target="_blank" rel="noopener noreferrer" class="btn-order-wa">
+                    Encargar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERÍA FOTOGRÁFICA INTERACTIVA -->
+    <section class="gallery section" id="galeria">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">VIVE LA EXPERIENCIA</span>
+                <h2 class="section-title">Galería de Momentos Reales</h2>
+                <p class="section-desc">Instalaciones, naturaleza, pozos termales y la alegría de nuestros visitantes.</p>
+            </div>
+
+            <!-- Categorías de Galería -->
+            <div class="gallery-category-chips">
+                <button class="gallery-chip active" data-filter="all">📸 Todas las Fotos</button>
+                <button class="gallery-chip" data-filter="cultura">🎭 Cultura & Patrimonio</button>
+                <button class="gallery-chip" data-filter="recreacion">🎯 Recreación & Piscinas</button>
+                <button class="gallery-chip" data-filter="experiencia">💆 Lodoterapia & Experiencias</button>
+                <button class="gallery-chip" data-filter="instalaciones">🏊 Albercas & Estancia</button>
+                <button class="gallery-chip" data-filter="naturaleza">🌿 Naturaleza & Paisajes</button>
+            </div>
+
+            <div class="gallery-masonry reveal" id="gallery-grid-dynamic">
+                <!-- Se alimenta dinámicamente desde db.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO LLEGAR (VIDEO & RECORRIDO) -->
+    <section class="videosection section" id="comollegar">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">RUTA Y RECORRIDO AKUATTA</span>
+                <h2 class="section-title">Cómo Llegar a Los Pozos Azufrados</h2>
+                <p class="section-desc">Mira el recorrido audiovisual para ubicarte fácilmente desde Tocaima.</p>
+            </div>
+
+            <div class="video-card reveal">
+                <div class="video-media-wrap">
+                    <video id="video-pozo" controls poster="../FOTOS/EWR.jpeg" preload="metadata">
+                        <source src="../VIDEO/COMO LLEGAR A AKUATTA!.mp4" type="video/mp4">
+                        Tu navegador no soporta reproducción de video HTML5.
+                    </video>
+                </div>
+                <div class="video-info-box">
+                    <div class="video-badge">📍 Vía Tocaima - Jerusalén Km 3,5</div>
+                    <h3>Fácil Acceso para Todo Tipo de Vehículos</h3>
+                    <p>
+                        A tan solo 10 minutos del parque principal de Tocaima por carretera pavimentada y señalizada. Contamos con parqueadero amplio, privado y vigilado sin ningún costo adicional.
+                    </p>
+                    <div class="travel-tips">
+                        <div class="tip-item">
+                            <span>🛣️</span>
+                            <div>
+                                <strong>Vía Principal</strong>
+                                <p>Ruta directa hacia Jerusalén, entrada en vereda Acuatá.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <span>🚗</span>
+                            <div>
+                                <strong>Parqueadero Gratis</strong>
+                                <p>Espacio seguro para autos familiares, camionetas y motos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN & CONTACTO -->
+    <section class="location section" id="ubicacion">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">ENCUÉNTRANOS</span>
+                <h2 class="section-title">Ubicación y Canales de Atención</h2>
+            </div>
+
+            <div class="location-grid reveal">
+                <div class="location-card">
+                    <div class="loc-header">
+                        <div class="loc-icon">📍</div>
+                        <div>
+                            <h3 id="loc-display-nombre">El Gran Pozo Azufrado Akuatta</h3>
+                            <span class="loc-tag">Tocaima • Ciudad Salud de Colombia</span>
+                        </div>
+                    </div>
+
+                    <div class="loc-list">
+                        <div class="loc-item">
+                            <span class="loc-item-icon">📌</span>
+                            <div>
+                                <strong>Dirección:</strong>
+                                <p id="loc-display-direccion">Km 3,5 vía Tocaima - Jerusalén, vereda Acuatá, Tocaima, Cundinamarca</p>
+                            </div>
+                        </div>
+
+                        <div class="loc-item">
+                            <span class="loc-item-icon">🕐</span>
+                            <div>
+                                <strong>Horario de Atención:</strong>
+                                <p id="loc-display-horario">Lunes a Domingo: 8:30 AM a 5:00 PM</p>
+                            </div>
+                        </div>
+
+                        <div class="loc-item">
+                            <span class="loc-item-icon">📞</span>
+                            <div>
+                                <strong>Teléfono / Llamadas:</strong>
+                                <p id="loc-display-telefono">+57 314 285 6899</p>
+                            </div>
+                        </div>
+
+                        <div class="loc-item">
+                            <span class="loc-item-icon">🛏️</span>
+                            <div>
+                                <strong>Tarifa Estadía por Persona:</strong>
+                                <p><strong style="color: var(--accent);" id="ubicacion-estancia-price">$35.000 COP</strong> (Incluye acceso a pozos, lodo y parqueadero)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="loc-actions">
+                        <a href="https://www.google.com/maps/search/?api=1&query=El+Gran+Pozo+Azufrado+Akuatta+Tocaima+Cundinamarca" target="_blank" rel="noopener noreferrer" class="btn-maps-primary">
+                            <span>🗺️ Abrir en Google Maps</span>
+                        </a>
+                        <a href="https://wa.me/573142856899" target="_blank" rel="noopener noreferrer" class="btn-maps-wa">
+                            <span>💬 Escribir al WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="map-embed-wrapper">
+                    <iframe
+                        title="Mapa de Ubicación de El Gran Pozo Azufrado"
+                        src="https://www.google.com/maps?q=El+Gran+Pozo+Azufrado+Akuatta+Tocaima+Cundinamarca&output=embed"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMENTARIOS Y TESTIMONIOS -->
+    <section class="comments section" id="comentarios">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-subtitle">TESTIMONIOS</span>
+                <h2 class="section-title">Comentarios de Nuestros Visitantes</h2>
+                <p class="section-desc">Tu opinión nos ayuda a brindar un servicio cada vez mejor.</p>
+            </div>
+
+            <div class="comments-grid reveal">
+                <form id="comments-form" class="comments-form-card" action="https://formsubmit.co/julianahernandezg23@gmail.com" method="POST">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_subject" value="Nuevo Comentario - El Gran Pozo Azufrado">
+
+                    <h3>Comparte tu Experiencia</h3>
+                    <p class="form-subtext">Cuéntanos cómo fue tu visita a las albercas azufradas y la lodoterapia.</p>
+
+                    <div class="form-group">
+                        <label for="comment-name" class="form-label">Nombre Completo</label>
+                        <input type="text" id="comment-name" name="name" class="form-control" placeholder="Ej: Marcela Restrepo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-email" class="form-label">Correo Electrónico</label>
+                        <input type="email" id="comment-email" name="email" class="form-control" placeholder="correo@ejemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="comment-message" class="form-label">Comentario o Reseña</label>
+                        <textarea id="comment-message" name="message" class="form-control" rows="4" placeholder="¿Qué fue lo que más disfrutaste de tu visita?..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit-comment">
+                        <span>Publicar Comentario ✨</span>
+                    </button>
+                </form>
+
+                <div class="comments-feed-card">
+                    <div class="feed-header">
+                        <h3>💬 Reseñas Recientes</h3>
+                        <span class="feed-tag">Verificadas</span>
+                    </div>
+                    <div id="comments-list" class="comments-feed-list">
+                        <!-- Comentarios inyectados por main.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand-col">
+                <div class="footer-logo">
+                    <img src="../LOGO/LOGO AKUATTA.jpeg" alt="Logo">
+                    <div>
+                        <h4>El Gran Pozo Azufrado</h4>
+                        <span>Santuario de Salud & Descanso</span>
+                    </div>
+                </div>
+                <p class="footer-bio">
+                    El primer destino ecoterapéutico en Tocaima, Cundinamarca. Aguas minerales azufradas de origen profundo y lodo medicinal desde 1942.
+                </p>
+                <div class="footer-social-links">
+                    <a href="https://wa.me/573142856899" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">📱</a>
+                    <a href="https://www.facebook.com/share/1GxsBGtL6g/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
+                    <a href="https://www.instagram.com/akuattatoc?igsh=dDNrbjV1NmwxdjBr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📸</a>
+                </div>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Navegación Rápida</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#historia">Nuestra Historia</a></li>
+                    <li><a href="#servicios">Servicios Termales</a></li>
+                    <li><a href="#estancia">Estancia & Tarifas (<span id="footer-estancia-price">$35.000</span>)</a></li>
+                    <li><a href="#gastronomia">Gastronomía & Bebidas</a></li>
+                    <li><a href="#galeria">Galería de Fotos</a></li>
+                    <li><a href="#ubicacion">Ubicación y Acceso</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-col">
+                <h4>Atención al Visitante</h4>
+                <p>📍 Km 3,5 vía Tocaima - Jerusalén, Cundinamarca</p>
+                <p>📞 Tel: +57 314 285 6899</p>
+                <p>🕐 Horario: 8:30 AM a 5:00 PM (Todos los días)</p>
+                <p>🚗 Parqueadero Privado: Gratuito</p>
+                
+                <!-- Enlace al panel administrativo privado -->
+                <div class="admin-portal-link-wrap" style="margin-top: 18px;">
+                    <a href="login.html" class="btn-admin-portal" title="Acceso exclusivo para el dueño">
+                        🔒 Acceso Panel del Dueño
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-inner">
+                <p>&copy; 2026 El Gran Pozo Azufrado. Todos los derechos reservados. Destino Turístico Sostenible.</p>
+                <div class="footer-security-tag">
+                    <span>🛡️ Sistema de Gestión Actualizado</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN VOLVER ARRIBA -->
+    <button class="btn-back-to-top" id="btn-back-to-top" aria-label="Volver arriba" title="Volver al inicio de la página">
+        ▲
+    </button>
+
+    <!-- BOTONES FLOTANTES DE REDES SOCIALES -->
+    <div class="floating-social-group">
+        <a href="https://wa.me/573142856899?text=Hola%2C%20quisiera%20informaci%C3%B3n%20sobre%20Los%20Pozos%20Azufrados" target="_blank" rel="noopener noreferrer" class="float-btn float-wa" title="Escríbenos a WhatsApp">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp">
+        </a>
+        <a href="https://www.facebook.com/share/1GxsBGtL6g/" target="_blank" rel="noopener noreferrer" class="float-btn float-fb" title="Síguenos en Facebook">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/akuattatoc?igsh=dDNrbjV1NmwxdjBr" target="_blank" rel="noopener noreferrer" class="float-btn float-ig" title="Síguenos en Instagram">
+            <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram">
+        </a>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="../js/db.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

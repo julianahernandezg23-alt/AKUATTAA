@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | El Gran Pozo Azufrado</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/admin.css">
+
+    <!-- PROTECCIÓN DE RUTA INMEDIATA (Evita FOUC / Parpadeo sin sesión) -->
+    <style id="auth-shield">
+        body.admin-app { display: none !important; }
+    </style>
+    <script src="../js/auth.js"></script>
+    <script>
+        if (!PozoAuth.isAuthenticated()) {
+            sessionStorage.setItem('pozo_redirect_after_login', window.location.href);
+            window.location.replace('login.html');
+        } else {
+            document.addEventListener('DOMContentLoaded', () => {
+                const shield = document.getElementById('auth-shield');
+                if (shield) shield.remove();
+                document.body.style.display = 'flex';
+            });
+        }
+    </script>
+</head>
+<body class="admin-app">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="sidebar-brand">
+            <img src="../LOGO/LOGO AKUATTA.jpeg" alt="Logo" class="sidebar-logo">
+            <div class="sidebar-brand-text">
+                <h3>El Gran Pozo</h3>
+                <span>Panel del Dueño</span>
+            </div>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li>
+                <a class="nav-item active" data-section="section-resumen">
+                    <span class="nav-icon">📊</span>
+                    <span>Resumen</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-comidas">
+                    <span class="nav-icon">🍔</span>
+                    <span>Comidas</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-bebidas">
+                    <span class="nav-icon">🥤</span>
+                    <span>Bebidas</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-estancia">
+                    <span class="nav-icon">🏨</span>
+                    <span>Estancia & Precios</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-galeria">
+                    <span class="nav-icon">📸</span>
+                    <span>Galería de Fotos</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-info">
+                    <span class="nav-icon">📍</span>
+                    <span>Información Turística</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item" data-section="section-config">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Seguridad & Respaldo</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <a href="index.html" target="_blank" class="btn-sidebar-link">
+                <span>🌐 Ver Sitio Público</span>
+            </a>
+            <button id="btn-logout" class="btn-sidebar-link btn-sidebar-logout" style="width: 100%; border: none; background: transparent; cursor: pointer; text-align: left;">
+                <span>🚪 Cerrar Sesión</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- MAIN WRAPPER -->
+    <div class="admin-main">
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+            <div class="topbar-left">
+                <button id="sidebar-toggle-btn" class="menu-toggle-btn" aria-label="Abrir menú lateral">
+                    ☰
+                </button>
+                <h2 class="page-title" id="admin-page-title">Panel de Control General</h2>
+            </div>
+
+            <div class="topbar-right">
+                <a href="index.html" target="_blank" class="btn-visit-site">
+                    <span>Ver Sitio en Vivo</span> ↗
+                </a>
+                <div class="admin-user-badge">
+                    <span>👤</span>
+                    <strong id="user-display-name">Administrador</strong>
+                </div>
+            </div>
+        </header>
+
+        <!-- BODY CONTENT -->
+        <main class="admin-body">
+
+            <!-- 1. RESUMEN / DASHBOARD -->
+            <section id="section-resumen" class="admin-section active-section">
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-info">
+                            <span>Platos de Comida</span>
+                            <h3 id="stat-comidas">0</h3>
+                        </div>
+                        <div class="metric-icon">🍔</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-info">
+                            <span>Bebidas en Carta</span>
+                            <h3 id="stat-bebidas">0</h3>
+                        </div>
+                        <div class="metric-icon blue">🥤</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-info">
+                            <span>Fotos en Galería</span>
+                            <h3 id="stat-galeria">0</h3>
+                        </div>
+                        <div class="metric-icon gold">📸</div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-info">
+                            <span>Tarifa Estadía</span>
+                            <h3 id="stat-estancia">$35.000</h3>
+                        </div>
+                        <div class="metric-icon purple">🛏️</div>
+                    </div>
+                </div>
+
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Bienvenido al Panel de Control de Los Pozos Azufrados</h3>
+                            <p>Cualquier cambio que realices en precios, platos, bebidas o fotos se actualizará automáticamente en la página pública para todos tus visitantes.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 10px;">
+                        <div style="padding: 20px; background: #f8fafc; border-radius: 12px; border: 1px solid #e2e8f0;">
+                            <h4 style="color: var(--admin-primary); margin-bottom: 8px;">⚡ Acciones Rápidas</h4>
+                            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 14px;">Administra los elementos más consultados por los turistas.</p>
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <button class="btn-action" onclick="AdminApp.switchTab('section-comidas'); AdminApp.openComidaModal();">➕ Agregar Nueva Comida</button>
+                                <button class="btn-action" onclick="AdminApp.switchTab('section-bebidas'); AdminApp.openBebidaModal();">➕ Agregar Nueva Bebida</button>
+                                <button class="btn-action" onclick="AdminApp.switchTab('section-estancia');">✏️ Modificar Precios de Estancia</button>
+                                <button class="btn-action" onclick="AdminApp.switchTab('section-galeria'); AdminApp.openGaleriaModal();">📸 Subir Foto a Galería</button>
+                            </div>
+                        </div>
+
+                        <div style="padding: 20px; background: #f0fdf4; border-radius: 12px; border: 1px solid #bbf7d0;">
+                            <h4 style="color: #166534; margin-bottom: 8px;">✅ Sistema Seguro y Persistente</h4>
+                            <p style="font-size: 0.85rem; color: #15803d; line-height: 1.5;">
+                                Tus datos se guardan permanentemente. Si reinicias la computadora, cierras la página o usas un teléfono móvil, toda tu información permanecerá intacta.
+                            </p>
+                            <div style="margin-top: 14px;">
+                                <button class="btn-action" onclick="AdminApp.exportData();">💾 Descargar Copia de Seguridad (Backup)</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. ADMINISTRAR COMIDAS -->
+            <section id="section-comidas" class="admin-section">
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Gestión de Comidas y Platos Típicos</h3>
+                            <p>Edita nombres, precios, ingredientes y fotografías de los platos que se ofrecen en el restaurante.</p>
+                        </div>
+                        <button class="btn-admin-primary" onclick="AdminApp.openComidaModal()">
+                            <span>➕ Agregar Comida</span>
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Plato / Fotografía</th>
+                                    <th>Precio</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="comidas-table-body">
+                                <!-- Filas generadas dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. ADMINISTRAR BEBIDAS -->
+            <section id="section-bebidas" class="admin-section">
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Gestión de Bebidas y Licores</h3>
+                            <p>Administra gaseosas, aguas, sueros rehidratantes, jugos naturales y cervezas frías.</p>
+                        </div>
+                        <button class="btn-admin-primary" onclick="AdminApp.openBebidaModal()">
+                            <span>➕ Agregar Bebida</span>
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Bebida / Presentación</th>
+                                    <th>Categoría</th>
+                                    <th>Precio</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bebidas-table-body">
+                                <!-- Filas generadas dinámicamente -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. ADMINISTRAR ESTANCIA -->
+            <section id="section-estancia" class="admin-section">
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Tarifas de Estancia y Hospedaje</h3>
+                            <p>Modifica el costo por persona, descripción de los servicios incluidos y fotografía de portada.</p>
+                        </div>
+                        <button class="btn-admin-primary" onclick="AdminApp.openEstanciaModal()">
+                            <span>➕ Agregar Opción de Estadía</span>
+                        </button>
+                    </div>
+
+                    <div id="estancia-cards-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                        <!-- Tarjetas de estancia generadas dinámicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. ADMINISTRAR GALERÍA -->
+            <section id="section-galeria" class="admin-section">
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Galería Fotográfica del Establecimiento</h3>
+                            <p>Sube nuevas fotos tomadas en el lugar o gestiona las fotos de pozos, lodoterapia y naturaleza.</p>
+                        </div>
+                        <button class="btn-admin-primary" onclick="AdminApp.openGaleriaModal()">
+                            <span>📸 Subir Nueva Fotografía</span>
+                        </button>
+                    </div>
+
+                    <div id="galeria-admin-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px;">
+                        <!-- Fotos generadas dinámicamente -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. INFORMACIÓN TURÍSTICA -->
+            <section id="section-info" class="admin-section">
+                <div class="section-box">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Datos de Contacto y Ubicación</h3>
+                            <p>Modifica los teléfonos, horarios, dirección y enlaces a redes sociales que ven los turistas.</p>
+                        </div>
+                    </div>
+
+                    <form id="info-turistica-form" style="max-width: 700px;">
+                        <div class="form-group">
+                            <label class="form-label">Nombre del Destino</label>
+                            <input type="text" id="info-nombre" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Lema o Frase Turística</label>
+                            <input type="text" id="info-lema" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Horario de Atención</label>
+                            <input type="text" id="info-horario" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Teléfono de Contacto</label>
+                            <input type="text" id="info-telefono" class="form-control" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Número de WhatsApp (con código de país sin +)</label>
+                            <input type="text" id="info-whatsapp" class="form-control" placeholder="Ej: 573142856899" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Dirección / Cómo Llegar</label>
+                            <textarea id="info-direccion" class="form-control" rows="2" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Enlace a Instagram</label>
+                            <input type="url" id="info-instagram" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Enlace a Facebook</label>
+                            <input type="url" id="info-facebook" class="form-control">
+                        </div>
+
+                        <button type="submit" class="btn-admin-primary">
+                            <span>💾 Guardar Cambios de Información</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- 7. SEGURIDAD Y RESPALDO -->
+            <section id="section-config" class="admin-section">
+                <div class="section-box" style="max-width: 600px;">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Cambiar Contraseña de Acceso</h3>
+                            <p>Actualiza la clave para ingresar al panel de administración.</p>
+                        </div>
+                    </div>
+
+                    <form id="change-password-form">
+                        <div class="form-group">
+                            <label class="form-label">Contraseña Actual</label>
+                            <input type="password" id="old-password" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nueva Contraseña</label>
+                            <input type="password" id="new-password" class="form-control" placeholder="Mínimo 5 caracteres" required>
+                        </div>
+                        <button type="submit" class="btn-admin-primary">
+                            <span>🔒 Actualizar Contraseña</span>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="section-box" style="max-width: 600px;">
+                    <div class="section-box-header">
+                        <div>
+                            <h3>Copia de Seguridad y Restauración</h3>
+                            <p>Guarda una copia de toda tu carta, precios y fotos en tu computador o transfiérela a otro dispositivo.</p>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button class="btn-admin-primary" onclick="AdminApp.exportData()">
+                            <span>💾 Descargar Copia de Seguridad</span>
+                        </button>
+                        <label class="btn-action" style="cursor: pointer; padding: 10px 16px; margin: 0;">
+                            <span>📥 Restaurar Copia (.json)</span>
+                            <input type="file" id="import-file-input" accept=".json" style="display: none;" onchange="AdminApp.importData(event)">
+                        </label>
+                        <button class="btn-action btn-delete" onclick="AdminApp.resetFactory()">
+                            <span>⚠️ Restaurar a valores iniciales</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- MODAL: AGREGAR / EDITAR COMIDA -->
+    <div id="modal-comida" class="admin-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-comida-title">Agregar Plato de Comida</h3>
+                <button class="btn-close-modal" onclick="AdminApp.closeModal('modal-comida')">&times;</button>
+            </div>
+            <form id="form-comida">
+                <div class="modal-body">
+                    <input type="hidden" id="comida-id">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nombre del Plato</label>
+                        <input type="text" id="comida-nombre" class="form-control" placeholder="Ej: Gallina Campesina" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Precio ($ COP)</label>
+                        <input type="number" id="comida-precio" class="form-control" placeholder="Ej: 45000" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción / Acompañamientos</label>
+                        <textarea id="comida-desc" class="form-control" rows="3" placeholder="Ingredientes, modo de preparación, guarniciones..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Fotografía del Plato</label>
+                        <input type="file" id="comida-file" class="form-control" accept="image/*">
+                        <input type="hidden" id="comida-img-url">
+                        <div class="image-preview-wrap" id="comida-preview">
+                            <span>Vista previa de la fotografía</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="comida-activo" checked style="width: 18px; height: 18px;">
+                            <span style="font-weight: 600; font-size: 0.9rem;">Producto Activo (Visible en el sitio web)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="AdminApp.closeModal('modal-comida')">Cancelar</button>
+                    <button type="submit" class="btn-admin-primary">Guardar Comida</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: AGREGAR / EDITAR BEBIDA -->
+    <div id="modal-bebida" class="admin-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-bebida-title">Agregar Bebida</h3>
+                <button class="btn-close-modal" onclick="AdminApp.closeModal('modal-bebida')">&times;</button>
+            </div>
+            <form id="form-bebida">
+                <div class="modal-body">
+                    <input type="hidden" id="bebida-id">
+                    
+                    <div class="form-group">
+                        <label class="form-label">Nombre de la Bebida</label>
+                        <input type="text" id="bebida-nombre" class="form-control" placeholder="Ej: Jugo de Maracuyá" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Categoría</label>
+                        <select id="bebida-categoria" class="form-control" required>
+                            <option value="gaseosas">🥤 Gaseosas</option>
+                            <option value="aguas">💧 Aguas & Hidratación</option>
+                            <option value="jugos">🥭 Jugos Naturales</option>
+                            <option value="cervezas">🍺 Cervezas Frías</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Precio ($ COP)</label>
+                        <input type="number" id="bebida-precio" class="form-control" placeholder="Ej: 7000" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción</label>
+                        <input type="text" id="bebida-desc" class="form-control" placeholder="Ej: En agua o leche, bien fría">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Fotografía de la Bebida</label>
+                        <input type="file" id="bebida-file" class="form-control" accept="image/*">
+                        <input type="hidden" id="bebida-img-url">
+                        <div class="image-preview-wrap" id="bebida-preview">
+                            <span>Vista previa de la fotografía</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="bebida-activo" checked style="width: 18px; height: 18px;">
+                            <span style="font-weight: 600; font-size: 0.9rem;">Bebida Activa (Visible en el sitio web)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="AdminApp.closeModal('modal-bebida')">Cancelar</button>
+                    <button type="submit" class="btn-admin-primary">Guardar Bebida</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: EDITAR ESTANCIA -->
+    <div id="modal-estancia" class="admin-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-estancia-title">Plan de Estadía</h3>
+                <button class="btn-close-modal" onclick="AdminApp.closeModal('modal-estancia')">&times;</button>
+            </div>
+            <form id="form-estancia">
+                <div class="modal-body">
+                    <input type="hidden" id="estancia-id">
+
+                    <div class="form-group">
+                        <label class="form-label">Título del Plan de Estadía</label>
+                        <input type="text" id="estancia-titulo" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Precio por Persona ($ COP)</label>
+                        <input type="number" id="estancia-precio" class="form-control" min="0" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción General</label>
+                        <textarea id="estancia-desc" class="form-control" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Servicios Incluidos (uno por línea)</label>
+                        <textarea id="estancia-incluye" class="form-control" rows="4" placeholder="Acceso a albercas termales&#10;Lodoterapia ancestral..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Fotografía de la Estancia</label>
+                        <input type="file" id="estancia-file" class="form-control" accept="image/*">
+                        <input type="hidden" id="estancia-img-url">
+                        <div class="image-preview-wrap" id="estancia-preview">
+                            <span>Vista previa</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            <input type="checkbox" id="estancia-activo" checked style="width: 18px; height: 18px;">
+                            <span style="font-weight: 600; font-size: 0.9rem;">Plan Activo (Visible en el sitio web)</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="AdminApp.closeModal('modal-estancia')">Cancelar</button>
+                    <button type="submit" class="btn-admin-primary">Guardar Estancia</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: SUBIR FOTO A GALERÍA -->
+    <div id="modal-galeria" class="admin-modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Subir Fotografía a Galería</h3>
+                <button class="btn-close-modal" onclick="AdminApp.closeModal('modal-galeria')">&times;</button>
+            </div>
+            <form id="form-galeria">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="form-label">Título de la Fotografía</label>
+                        <input type="text" id="galeria-titulo" class="form-control" placeholder="Ej: Atardecer en las albercas azufradas" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Categoría</label>
+                        <select id="galeria-categoria" class="form-control" required>
+                            <option value="instalaciones">Albercas e Instalaciones</option>
+                            <option value="pozo">Pozo Azufrado & Naturaleza</option>
+                            <option value="experiencia">Lodoterapia & Experiencia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Descripción Breve</label>
+                        <input type="text" id="galeria-desc" class="form-control" placeholder="Detalle de la foto para el visitante">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Seleccionar Imagen</label>
+                        <input type="file" id="galeria-file" class="form-control" accept="image/*" required>
+                        <input type="hidden" id="galeria-img-url">
+                        <div class="image-preview-wrap" id="galeria-preview">
+                            <span>Selecciona una foto</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn-cancel" onclick="AdminApp.closeModal('modal-galeria')">Cancelar</button>
+                    <button type="submit" class="btn-admin-primary">Guardar en Galería</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="../js/db.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

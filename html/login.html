@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Administrativo | El Gran Pozo Azufrado</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fuentes Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body class="login-body">
+
+    <!-- Fondo con desenfoque e imagen de los pozos -->
+    <div class="login-bg-overlay"></div>
+
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <a href="index.html" class="login-back-btn" title="Volver a la web pública">
+                    ← Volver al sitio web
+                </a>
+                <div class="login-logo-wrap">
+                    <img src="../LOGO/LOGO AKUATTA.jpeg" alt="Logo El Gran Pozo Azufrado" class="login-logo-img">
+                </div>
+                <h2>Panel de Administración</h2>
+                <p class="login-subtitle">El Gran Pozo Azufrado • Gestión Privada</p>
+            </div>
+
+            <!-- Alerta de mensaje -->
+            <div id="login-alert" class="login-alert" style="display: none;"></div>
+
+            <form id="login-form" class="login-form" autocomplete="off">
+                <div class="form-group">
+                    <label for="username" class="form-label">Usuario o Correo Electrónico</label>
+                    <div class="input-icon-wrap">
+                        <span class="input-icon">👤</span>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            class="form-control" 
+                            placeholder="admin o correo@ejemplo.com" 
+                            required 
+                            autofocus
+                        >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="input-icon-wrap">
+                        <span class="input-icon">🔒</span>
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-control" 
+                            placeholder="Ingresa tu contraseña" 
+                            required
+                        >
+                        <button type="button" id="toggle-password" class="btn-toggle-pwd" aria-label="Mostrar u ocultar contraseña">
+                            👁️
+                        </button>
+                    </div>
+                </div>
+
+                <div class="login-hints">
+                    <span class="hint-tag">🔑 Acceso seguro con encriptación SHA-256</span>
+                </div>
+
+                <button type="submit" id="btn-login-submit" class="btn-primary btn-block">
+                    <span>Ingresar al Panel</span> →
+                </button>
+            </form>
+
+            <div class="login-footer">
+                <p>🔒 Acceso restringido exclusivamente para la administración del establecimiento.</p>
+                <p class="credentials-hint">Credencial inicial: usuario <strong>admin</strong> | clave <strong>admin123</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts del sistema -->
+    <script src="../js/db.js"></script>
+    <script src="../js/auth.js"></script>
+    <script>
+        // Si ya hay sesión activa, redirigir directamente al panel
+        if (PozoAuth.isAuthenticated()) {
+            window.location.href = 'admin.html';
+        }
+
+        const loginForm = document.getElementById('login-form');
+        const loginAlert = document.getElementById('login-alert');
+        const togglePwd = document.getElementById('toggle-password');
+        const pwdInput = document.getElementById('password');
+        const submitBtn = document.getElementById('btn-login-submit');
+
+        // Toggle mostrar/ocultar contraseña
+        togglePwd.addEventListener('click', () => {
+            const isPassword = pwdInput.type === 'password';
+            pwdInput.type = isPassword ? 'text' : 'password';
+            togglePwd.textContent = isPassword ? '🙈' : '👁️';
+        });
+
+        // Manejar envío de login
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value.trim();
+            const password = pwdInput.value.trim();
+
+            loginAlert.style.display = 'none';
+            loginAlert.className = 'login-alert';
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Verificando credenciales...</span> ⏳';
+
+            const result = await PozoAuth.login(username, password);
+
+            if (result.success) {
+                loginAlert.textContent = "Acceso concedido. Redirigiendo al panel...";
+                loginAlert.classList.add('alert-success');
+                loginAlert.style.display = 'block';
+
+                setTimeout(() => {
+                    const redirect = sessionStorage.getItem('pozo_redirect_after_login') || 'admin.html';
+                    sessionStorage.removeItem('pozo_redirect_after_login');
+                    window.location.href = redirect;
+                }, 700);
+            } else {
+                loginAlert.textContent = result.message;
+                loginAlert.classList.add('alert-danger');
+                loginAlert.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Ingresar al Panel</span> →';
+            }
+        });
+    </script>
+</body>
+</html>
